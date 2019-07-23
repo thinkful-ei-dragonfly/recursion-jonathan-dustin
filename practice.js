@@ -210,4 +210,105 @@ function findAllMazeSolutions(maze, x = 0, y = 0, path = '') {
 
 }
 
-console.log(findAllMazeSolutions(bigMaze))
+// console.log(findAllMazeSolutions(bigMaze))
+
+//10. Anagrams
+
+function anagrams(prefix, str){
+  if(str.length <= 1){
+      console.log(`The anagram is ${prefix}${str}`);
+  } else {
+      for(let i=0; i<str.length; i++){
+          let currentLetter = str.substring(i, i+1); 
+          let previousLetters = str.substring(0,i);
+          let afterLetters = str.substring(i+1);
+          anagrams(prefix+currentLetter, previousLetters+afterLetters);
+      }
+  }
+}
+function printAnagram(word){
+  //console.log(`The word for which we will find an anagram is ${word}`);
+  anagrams(' ', word);
+
+}
+
+//11. Organization Chart
+
+let organization = {
+	"Zuckerberg": {		
+		"Schroepfer": {
+			"Bosworth": {
+				"Steve":{},
+				"Kyle":{},
+				"Andra":{}
+			},
+			"Zhao": {
+				"Richie":{},
+				"Sofia":{},
+				"Jen":{}
+			},
+			"Badros": {
+				"John":{},
+				"Mike":{},
+				"Pat":{}
+			},
+			"Parikh": {
+				"Zach":{},
+				"Ryan":{},
+				"Tes":{}
+			}
+		},
+		"Schrage": {
+			"VanDyck": {
+				"Sabrina":{},
+				"Michelle":{},
+				"Josh":{}
+			},
+			"Swain": {
+				"Blanch":{},
+				"Tom":{},
+				"Joe":{}
+			},
+			"Frankovsky": {
+				"Jasee":{},
+				"Brian":{},
+				"Margaret":{}
+			}
+		},
+		"Sandberg": {
+			"Goler": {
+				"Eddie":{},
+				"Julie":{},
+				"Annie":{}
+			},
+			"Hernandez": {
+				"Rowi":{},
+				"Inga":{},
+				"Morgan":{}
+			},
+			"Moissinac": {
+				"Amy":{},
+				"Chuck":{},
+				"Vinni":{}
+			},
+			"Kelley": {
+				"Eric":{},
+				"Ana":{},
+				"Wes":{}
+			}
+}}};
+*/
+function traverseA(data, depth = 0) {
+	let indent = " ".repeat(depth * 4);
+	Object.keys(data).forEach(key => {
+		console.log(indent + key);
+		traverseA(data[key], depth + 1)
+	});
+}
+//another version of the solution
+function traverseB(node, indent=0) {
+	for (var key in node) {
+		console.log(" ".repeat(indent), key);
+		traverseB(node[key], indent + 4);
+	}
+}
